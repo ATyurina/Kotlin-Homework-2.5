@@ -36,9 +36,10 @@ object WallService {
     private var ident = 5
 
     fun add(post: Post): Post {
-        posts += post.copy(id = ident)
+        var postId = post.copy(id = ident)
+        posts += postId
         ident += 1
-        return posts.last()
+        return postId
     }
 
     fun update(post: Post): Boolean {
@@ -53,12 +54,6 @@ object WallService {
 }
 
 fun main() {
-    var wall = WallService
-    var postOne = Post(1)
-    var postTwo = Post(1)
-    var postOTree = Post(1)
-    var postOFour = Post(5, authorId = 8, content = "fooo", published = 3456789)
-    var postOFive = Post(6, authorId = 0, content = "pooo", published = 34567)
 }
 
 
