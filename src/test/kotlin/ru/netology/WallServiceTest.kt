@@ -10,11 +10,11 @@ class WallServiceTest {
     fun updateExisting() {
         val service = WallService
 
-        service.add(Post(0))
-        service.add(Post(0))
-        service.add(Post(0))
+        service.add(Post(0, replyOwnerId = 0, replyPostId = 0, signerId = 0, postponedId = 0))
+        service.add(Post(0, replyOwnerId = 0, replyPostId = 0, signerId = 0, postponedId = 0))
+        service.add(Post(0, replyOwnerId = 0, replyPostId = 0, signerId = 0, postponedId = 0))
 
-        val update = Post(5, authorId = 8, content = "fooo", published = 3456789)
+        val update = Post(5, createdBy = 8, text = "fooo", published = 3456789, replyOwnerId = 0, replyPostId = 0, signerId = 0, postponedId = 0)
 
 
         val result = service.update(update)
@@ -27,11 +27,11 @@ class WallServiceTest {
     fun updateNotExisting() {
         val service = WallService
 
-        service.add(Post(0))
-        service.add(Post(0))
-        service.add(Post(0))
+        service.add(Post(0, replyOwnerId = 0, replyPostId = 0, signerId = 0, postponedId = 0))
+        service.add(Post(0, replyOwnerId = 0, replyPostId = 0, signerId = 0, postponedId = 0))
+        service.add(Post(0, replyOwnerId = 0, replyPostId = 0, signerId = 0, postponedId = 0))
 
-        val update = Post(2, authorId = 8, content = "fooo", published = 3456789)
+        val update = Post(2, createdBy = 8, text = "fooo", published = 3456789, replyOwnerId = 0, replyPostId = 0, signerId = 0, postponedId = 0)
 
 
         val result = service.update(update)
@@ -44,7 +44,7 @@ class WallServiceTest {
     fun add() {
         val service = WallService
 
-        val result = service.add(Post(0))
+        val result = service.add(Post(0, replyOwnerId = 0, replyPostId = 0, signerId = 0, postponedId = 0))
 
         assertTrue(result.id != 0)
     }
