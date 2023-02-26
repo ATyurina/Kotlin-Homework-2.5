@@ -18,6 +18,7 @@ data class Post(
     val postType: String = "reply",
     val postSource: String = "Information",
 
+    val attachment: Array<Attachment> = Array(5, {AttachmentPhoto(Photo()); AttachmentVideo(Video());AttachmentAudio(Audio()); AttachmentDoc(Doc()); AttachmentPoll(Poll())}),
     val geo: Geo = Geo(),
     val signerId: Int?,
     var copyHistory: Array<String> = emptyArray(),
@@ -68,6 +69,67 @@ data class Donut(
     val placeholder: String = "LOL",
     val canPublishFreeCopy: Boolean = true,
     val editMode: String = "all"
+)
+
+sealed class Attachment (val type: String)
+class AttachmentPhoto(val photo: Photo) : Attachment("photo")
+
+class AttachmentVideo(val video: Video) : Attachment("video")
+
+class AttachmentAudio(val audio: Audio) : Attachment("audio")
+
+class AttachmentDoc(val doc: Doc) : Attachment("doc")
+
+class AttachmentPoll(val poll: Poll) : Attachment("poll")
+
+class Photo(
+    val id: Int = 12,
+    val albumId: Int = 976,
+    val ownerId: Int = 976,
+    val userId: Int = 65,
+    val text: String = "kitty",
+    val date: Int = 54785897,
+    val sizes: Array<String> = emptyArray(),
+    val width: Int = 2040,
+    val height: Int = 576
+)
+
+class Video(
+    val id: Int = 25,
+    val ownerId: Int = 452,
+    val title: String = "best friend forever",
+    val description: String = "Jake and Finn",
+    val duration: Int = 60,
+    val image: Array<String> = emptyArray(),
+    val views: Int = 2
+)
+
+class Audio(
+    val id: Int = 34,
+    val ownerId: Int = 239,
+    val artist: String = "Blondy",
+    val title: String = "Maria",
+    val duration: Int = 180,
+    val url: String = "https://www.youtube.com/watch?v=VoOG7LEyUJ0",
+    val genreId: Int = 23
+)
+
+class Doc(
+    val id: Int = 21,
+    val ownerId: Int = 230,
+    val title: String = "new folder",
+    val size: Int = 230,
+    val ext: String = "txt",
+    val type: Int = 1
+)
+
+class Poll(
+    val id: Int = 90,
+    val ownerId: Int = 198,
+    val created: Int = 924657,
+    val question: String = "How you doing?",
+    val votes: Int = 26843,
+    val anonymous: Boolean = true
 )
 object WallService {
 
